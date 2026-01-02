@@ -30,6 +30,7 @@ a { color: var(--primary-color); text-decoration: none; transition: 0.2s; }
 a:hover { color: var(--secondary-color); text-decoration: underline; }
 img { max-width: 100%; height: auto; display: block; }
 h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); color: var(--heading-color); margin-bottom: 1rem; line-height: 1.3; font-weight: 600; }
+ul { margin: 40px; }
 
 /* Layout Grid */
 .container { max-width: var(--container-width); margin: 0 auto; padding: 0 1rem; }
@@ -86,6 +87,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); color: var(--heading-
 @media (max-width: 768px) {
     .main-navigation { display: none; } /* Simplified for this task, usually requires JS toggle */
     .site-content { display: block; }
+    .site-main { margin-bottom: 2rem; }
 }
 
 /* =========================================
