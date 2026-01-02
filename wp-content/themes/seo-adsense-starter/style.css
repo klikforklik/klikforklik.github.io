@@ -1,0 +1,562 @@
+/*
+Theme Name: SEO Adsense Starter
+Theme URI: https://example.com
+Author: AI Generated
+Author URI: https://example.com
+Description: Fast, SEO optimized, Adsense-friendly WordPress theme.
+Version: 1.0
+License: GNU General Public License v2 or later
+Text Domain: seo-adsense-starter
+*/
+
+:root {
+    --primary-color: #2563eb; /* Biru Modern */
+    --secondary-color: #1e40af;
+    --text-color: #334155;
+    --heading-color: #0f172a;
+    --bg-color: #ffffff;
+    --light-bg: #f8fafc;
+    --border-color: #e2e8f0;
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --container-width: 1200px;
+    --gap: 2rem;
+}
+
+/* Reset & Base */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-body); color: var(--text-color); background: var(--bg-color); line-height: 1.6; font-size: 16px; }
+a { color: var(--primary-color); text-decoration: none; transition: 0.2s; }
+a:hover { color: var(--secondary-color); text-decoration: underline; }
+img { max-width: 100%; height: auto; display: block; }
+h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); color: var(--heading-color); margin-bottom: 1rem; line-height: 1.3; font-weight: 600; }
+
+/* Layout Grid */
+.container { max-width: var(--container-width); margin: 0 auto; padding: 0 1rem; }
+.site-header { background: #fff; border-bottom: 1px solid var(--border-color); padding: 10px 0; position: sticky; top: 0; z-index: 1000; }
+.header-inner { display: flex; justify-content: space-between; align-items: center; }
+.site-branding h1 { margin: 0; }
+.site-branding img { width: 240px; }
+
+/* Navigation */
+.main-navigation ul { list-style: none; display: flex; gap: 1.5rem; }
+.main-navigation a { color: var(--heading-color); font-weight: 500; }
+
+/* Main Content Area */
+.site-content { display: grid; grid-template-columns: 1fr; gap: var(--gap); padding: 2rem 0; }
+@media (min-width: 992px) {
+    .site-content { grid-template-columns: 2.5fr 1fr; }
+}
+
+/* Post Layout */
+.post-card { margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 2rem; }
+.post-meta { font-size: 0.875rem; color: #64748b; margin-bottom: 0.5rem; }
+.read-more { display: inline-block; margin-top: 1rem; font-weight: 600; }
+
+/* Single Post */
+.single-post-content { font-size: 1.125rem; }
+.single-post-content p { margin-bottom: 1.5rem; }
+.single-post-content h2 { margin-top: 2rem; }
+
+/* Sidebar */
+.sidebar-widget { background: var(--light-bg); padding: 1.5rem; margin-bottom: 2rem; border-radius: 8px; }
+.sidebar-widget h3 { font-size: 1.25rem; border-bottom: 2px solid var(--primary-color); padding-bottom: 0.5rem; display: inline-block; margin-bottom: 1rem; }
+.sidebar-widget ul { list-style: none; padding-left: 0; }
+.sidebar-widget li { margin-bottom: 0.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; }
+
+/* Adsense Slots - Visual Placeholder */
+.adsense-slot { background: #f1f5f9; border: 1px dashed #cbd5e1; text-align: center; padding: 1rem; margin: 2rem 0; color: #94a3b8; font-size: 0.875rem; display: flex; align-items: center; justify-content: center; min-height: 100px; }
+
+/* Pagination */
+.pagination { margin: 2rem 0; display: flex; gap: 0.5rem; }
+.pagination .page-numbers { padding: 0.5rem 1rem; border: 1px solid var(--border-color); color: var(--text-color); }
+.pagination .current { background: var(--primary-color); color: #fff; border-color: var(--primary-color); }
+
+/* Footer */
+.site-footer { background: #1e293b; color: #fff; padding: 3rem 0; margin-top: 3rem; text-align: center; }
+.site-footer a { color: #93c5fd; }
+
+/* Utilities */
+.screen-reader-text { clip: rect(1px, 1px, 1px, 1px); height: 1px; width: 1px; overflow: hidden; position: absolute !important; }
+.search-form { display: flex; gap: 0.5rem; }
+.search-field { width: 100%; padding: 0.5rem; border: 1px solid var(--border-color); border-radius: 4px; }
+.search-submit { background: var(--primary-color); color: white; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer; }
+
+/* Mobile Menu Toggle (Simple) */
+@media (max-width: 768px) {
+    .main-navigation { display: none; } /* Simplified for this task, usually requires JS toggle */
+    .site-content { display: block; }
+}
+
+/* =========================================
+   13. Related Posts Styling
+   ========================================= */
+.related-posts {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.related-posts h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.related-posts ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive Grid */
+    gap: 1.5rem;
+}
+
+.related-posts li {
+    background: var(--light-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.related-posts li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border-color: var(--primary-color);
+}
+
+.related-posts li a {
+    font-weight: 600;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    color: var(--heading-color);
+    display: block; /* Agar seluruh area teks bisa diklik dengan nyaman */
+    line-height: 1.4;
+}
+
+.related-posts li a:hover {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+/* =========================================
+   14. Comments & Comment Form Styling
+   ========================================= */
+
+/* Wrapper Area Komentar */
+.comments-area {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.comments {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.comment {
+    margin: 10px;
+}
+
+/* List Komentar */
+.commentlist {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 3rem;
+}
+
+.comment-body {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 2rem;
+    position: relative;
+}
+
+/* Avatar & Meta Data */
+.comment-meta {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.comment-author .avatar {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+    object-fit: cover;
+    border: 2px solid var(--light-bg);
+}
+
+.fn {
+    font-weight: 700;
+    font-family: var(--font-heading);
+    color: var(--heading-color);
+    font-style: normal;
+    margin-right: 5px;
+}
+
+.comment-metadata {
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+.comment-metadata a {
+    color: #94a3b8;
+    text-decoration: none;
+}
+
+.comment-content p {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+/* Tombol Reply */
+.reply {
+    margin-top: 1rem;
+}
+
+.comment-reply-link {
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 5px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-color);
+}
+
+.comment-reply-link:hover {
+    background: var(--primary-color);
+    color: #fff;
+    border-color: var(--primary-color);
+    text-decoration: none;
+}
+
+/* Nested Comments (Balasan Bertingkat) */
+.children {
+    list-style: none;
+    padding-left: 2rem; /* Indentasi */
+    border-left: 2px solid var(--border-color);
+    margin-top: 2rem;
+}
+
+@media (max-width: 600px) {
+    .children {
+        padding-left: 1rem; /* Kurangi indentasi di mobile */
+    }
+}
+
+/* FORM KOMENTAR (.comment-respond) */
+.comment-respond {
+    background: #f8fafc; /* Latar belakang abu-abu sangat muda */
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.comment-reply-title {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comment-reply-title small a {
+    /* Style untuk link "Cancel Reply" */
+    font-size: 0.85rem;
+    color: #ef4444; /* Merah */
+    font-weight: normal;
+}
+
+.comment-form {
+    display: grid;
+    grid-gap: 1rem;
+}
+
+.comment-form label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--heading-color);
+}
+
+.comment-form input[type="text"],
+.comment-form input[type="email"],
+.comment-form input[type="url"],
+.comment-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 1rem;
+    background: #fff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.comment-form textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.comment-form input:focus,
+.comment-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); /* Efek glow biru saat fokus */
+}
+
+/* Tombol Submit Komentar */
+.form-submit {
+    margin-top: 1rem;
+}
+
+.submit {
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+    width: auto;
+    display: inline-block;
+}
+
+.submit:hover {
+    background: var(--secondary-color);
+}
+
+/* Checkbox Consent (GDPR) */
+.comment-form-cookies-consent {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.comment-form-cookies-consent input {
+    width: auto !important;
+    margin-top: 0;
+}
+
+.comment-form-cookies-consent label {
+    margin-bottom: 0;
+    font-weight: normal;
+    font-size: 0.9rem;
+}
+
+/* =========================================
+   10. MISSING CLASSES & WORDPRESS STANDARDS
+   (Audit Result Fixes)
+   ========================================= */
+
+/* A. Accessibility (Skip Link) - Wajib ada di header.php */
+.skip-link {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+    background: #000;
+    color: #fff;
+    padding: 1rem;
+    z-index: 9999;
+    text-decoration: none;
+    font-weight: bold;
+}
+.skip-link:focus {
+    top: 0;
+    left: 0;
+    width: auto;
+    height: auto;
+    clip: auto; /* Membatalkan clip screen-reader-text */
+}
+
+/* B. Breadcrumbs (dari functions.php) */
+.breadcrumbs {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1rem;
+}
+.breadcrumbs a { color: #666; }
+.breadcrumbs .current { font-weight: 600; color: #000; }
+
+/* C. Page Header & Archives (archive.php, index.php) */
+.page-header {
+    margin-bottom: 1rem;
+    padding-bottom: 1.5rem;
+}
+.page-title { font-size: 2rem; margin: 0; }
+.archive-description { margin-top: 1rem; font-size: 1rem; color: #555; }
+
+/* D. Post Thumbnails & Images (index.php) */
+.post-thumbnail { margin-bottom: 1.5rem; }
+.post-thumbnail img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    /* Optional: Aspect ratio agar rapi */
+    aspect-ratio: 16/9; 
+    background: #f0f0f0;
+}
+
+/* E. Entry Footer (Categories & Tags di single.php) */
+.entry-footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.9rem;
+}
+.entry-footer p { margin-bottom: 0.5rem; }
+.entry-footer a {
+    display: inline-block;
+    background: #f4f4f5;
+    padding: 2px 8px;
+    border-radius: 4px;
+    color: #333;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    font-size: 0.8rem;
+}
+.entry-footer a:hover {
+    background: #000;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* F. WordPress Standard Alignments (Wajib untuk Editor) */
+.alignleft { float: left; margin: 0 1.5rem 1.5rem 0; }
+.alignright { float: right; margin: 0 0 1.5rem 1.5rem; }
+.aligncenter { display: block; margin: 1.5rem auto; text-align: center; }
+.alignnone { margin: 1.5rem 0; }
+
+/* Captions (wp-caption) */
+.wp-caption { max-width: 100%; margin-bottom: 1.5rem; }
+.wp-caption-text {
+    font-size: 0.85rem;
+    color: #666;
+    text-align: center;
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+/* G. 404 Page Specific (404.php) */
+.error-404 { text-align: center; padding: 4rem 0; }
+.error-404 .page-title { border: none; font-size: 2rem; margin-bottom: 1rem; }
+.error-404 .page-content p { margin-bottom: 2rem; font-size: 1.1rem; }
+.button {
+    display: inline-block;
+    background: #000;
+    color: #fff;
+    padding: 12px 24px;
+    text-decoration: none;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+}
+.button:hover { background: #333; color: #fff; text-decoration: none; }
+
+/* H. Menu Active State (header.php) */
+/* WordPress otomatis inject class ini ke menu yg aktif */
+.main-navigation .current-menu-item > a,
+.main-navigation .current_page_item > a {
+    border-bottom: 2px solid #000;
+    padding-bottom: 2px;
+}
+
+/* I. Back to Top (footer.php) */
+.site-info { margin-bottom: 1rem; }
+/* Override link footer agar lebih halus */
+.site-footer a { color: inherit; text-decoration: underline; }
+
+/* =========================================
+   11. MOBILE MENU & HAMBURGER
+   ========================================= */
+
+/* Default: Tombol Sembunyi di Desktop */
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: auto; /* Dorong ke kanan */
+}
+
+/* Style Garis Hamburger */
+.icon-bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #000;
+    margin: 5px 0;
+    transition: 0.3s;
+}
+
+/* MOBILE VIEW (Max Width 768px) */
+@media (max-width: 768px) {
+    /* Header layout jadi relative untuk dropdown */
+    .header-inner {
+        flex-wrap: wrap; /* Izinkan elemen turun ke bawah */
+        position: relative;
+    }
+
+    /* Tampilkan Tombol */
+    .menu-toggle {
+        display: block;
+        order: 2; /* Posisi di kanan logo */
+    }
+
+    /* Navigasi Default: SEMBUNYI */
+    .main-navigation {
+        display: none;
+        width: 100%;
+        order: 3; /* Turun ke bawah logo & tombol */
+        margin-top: 1rem;
+        border-top: 1px solid #eee;
+    }
+
+    /* Navigasi Saat Aktif (.toggled): MUNCUL */
+    .main-navigation.toggled {
+        display: block;
+        animation: slideDown 0.3s ease forwards;
+    }
+
+    /* Ubah arah menu jadi vertikal */
+    .main-navigation ul {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .main-navigation li {
+        width: 100%;
+        border-bottom: 1px solid #f0f0f0;
+        text-align: center;
+    }
+
+    .main-navigation a {
+        display: block;
+        padding: 1rem;
+    }
+
+    /* Animasi Icon Hamburger jadi X saat aktif */
+    .menu-toggle.toggled .icon-bar:nth-child(2) {
+        transform: rotate(45deg) translate(5px, 6px);
+    }
+    .menu-toggle.toggled .icon-bar:nth-child(3) {
+        opacity: 0;
+    }
+    .menu-toggle.toggled .icon-bar:nth-child(4) {
+        transform: rotate(-45deg) translate(5px, -6px);
+    }
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
